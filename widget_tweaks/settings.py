@@ -29,6 +29,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-dayanan-djangowidgettwe-1on0vipcyt6.ws-eu110.gitpod.io']
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-dayanan-djangowidgettwe-1on0vipcyt6.ws-eu110.gitpod.io']
 
 
 # Application definition
