@@ -5,6 +5,10 @@ How to style forms in Django using Widget Tweaks
 
 In this article we are going to explore how to utilise the power of widget tweaks to style our forms in Django. If you have previous experience with Django you probably know that our forms need additional work in order to be styled as desired. We are going to setup a simple Contact Us form for our example.
 
+##### What is Django Widget Tweaks?
+
+Widget Tweaks is a package that provides additional functionalities and features for working with form widgets and rendering in Django templates. It is not a part of the Django core framework but is instead a third-party package that extends Django's capabilities.
+
 We are assuming that you know how to setup a Django project. Let's have a look at the code so far.
 
 We have created a new app called Contact which is where the majority of our code is going to live.
@@ -62,23 +66,34 @@ def contact(request):
 
 ##### The template
 
-Now let's see what results we get if we render the form as standart.
+Now let's see what results we get if we render the form as standart. Please note that we are using Bootstrap 5 in this template.
 
 ```
-<body>
-    <h1>Contact Us</h1>
-    {{form}}
-</body>
+    <section class="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10 text-center my-5 p-4 shadow-container">
+                    <h1>Contact Us</h1>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{form}}
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 ```
 
 As you can see the results require some styling. 
 
 ![](./media/form.PNG)
 
-#### Django Widget Tweaks
-Widget Tweaks is a package that provides additional functionalities and features for working with form widgets and rendering in Django templates. It is not a part of the Django core framework but is instead a third-party package that extends Django's capabilities.
+#### Setting up Django Widget Tweaks
 
-To setup Widget Tweaks, first we need to install the package by running `pip install django-widget-tweaks`
+To setup Widget Tweaks, first we need to install the package by running `pip install django-widget-tweaks` in our terminal.
 
 To enable widget_tweaks in our project we need to add it to INSTALLED_APPS in our project's settings.py file:
 
