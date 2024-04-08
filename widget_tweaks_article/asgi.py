@@ -11,6 +11,7 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'widget_tweaks.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE',
+                      'widget_tweaks_article.settings')
 
 application = get_asgi_application()

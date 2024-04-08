@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'contact.apps.ContactConfig',
+]
+
+INSTALLED_APPS += [
     'widget_tweaks',
 ]
 
@@ -57,7 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'widget_tweaks.urls'
+ROOT_URLCONF = 'widget_tweaks_article.urls'
 
 TEMPLATES = [
     {
@@ -65,6 +68,7 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug': True,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -75,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'widget_tweaks.wsgi.application'
+WSGI_APPLICATION = 'widget_tweaks_article.wsgi.application'
 
 
 # Database

@@ -93,9 +93,9 @@ As you can see the results require some styling.
 
 #### Setting up Django Widget Tweaks
 
-To setup Widget Tweaks, first we need to install the package by running `pip install django-widget-tweaks` in our terminal.
+1. To setup Widget Tweaks, first we need to install the package by running `pip install django-widget-tweaks` in our terminal.
 
-To enable widget_tweaks in our project we need to add it to INSTALLED_APPS in our project's settings.py file:
+2. To enable widget_tweaks in our project we need to add it to INSTALLED_APPS in our project's settings.py file:
 
 ```
 INSTALLED_APPS = [
@@ -103,3 +103,9 @@ INSTALLED_APPS = [
     'widget_tweaks',
 ]
 ```
+3. Load the package into our template by adding `{% load widget_tweaks %}` at the top of the `contact.html` file.
+We are now ready to use Widget Tweaks for our form.
+
+##### Rendering all fields
+
+We can easily loop through all of the fields in our form and render them. 
