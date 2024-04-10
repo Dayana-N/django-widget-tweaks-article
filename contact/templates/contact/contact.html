@@ -5,11 +5,76 @@
 <section class="contact">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-10 text-center my-5 p-4 shadow-container">
+            <div class="col-12 col-md-6 text-center my-5 p-4 form-container">
                 <h1>Contact Us</h1>
                 <form method="POST">
                     {% csrf_token %}
-                    {{form}}
+                    <!-- If any hidden fields -->
+                    {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                    {% endfor %}
+                    <!-- end -->
+
+                    <div class="form-floating mb-2">
+                        {% render_field form.first_name class="form-control" placeholder=form.text.label%}
+                        <label for="id_first_name">First Name:*</label>
+                        <!-- Rendering field errors -->
+                        {% for error in form.first_name.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-floating mb-2">
+                        {% render_field form.last_name class="form-control" placeholder=form.text.label%}
+                        <label for="id_last_name">Last Name:*</label>
+                        <!-- Rendering field errors -->
+                        {% for error in form.last_name.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-floating mb-2">
+                        {% render_field form.email class="form-control" placeholder=form.text.label%}
+                        <label for="id_email">Email:*</label>
+                        <!-- Rendering field errors -->
+                        {% for error in form.email.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-floating mb-2">
+                        {% render_field form.phone class="form-control" placeholder=form.text.label%}
+                        <label for="id_phone">Phone:</label>
+                        <!-- Rendering field errors -->
+                        {% for error in form.phone.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-floating mb-2">
+                        {% render_field form.subject class="form-control" placeholder=form.text.label%}
+                        <label for="id_subject">Subject:*</label>
+                        <!-- Rendering field errors -->
+                        {% for error in form.subject.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="id_message" class="form-label">Message:</label>
+                        {% render_field form.message|attr:"maxlength:2500" class="form-control" rows="5"%}
+                        {% for error in form.message.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Rendering Generic Form Errors -->
+                    {% if form.non_field_errors %}
+                    <div>
+                        <span class="text-danger"> {{ form.non_field_errors }}</span>
+                    </div>
+                    {% endif %}
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">Send</button>
                     </div>
